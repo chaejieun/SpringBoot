@@ -1,12 +1,11 @@
 package tobyspring.helloboot;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
 @Configuration
@@ -24,30 +23,15 @@ public class HellobootApplication {
 	}
 	
 	public static void main(String[] args) {
-		AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext() {
-
-			@Override
-			protected void onRefresh() {
-				// TODO Auto-generated method stub
-				super.onRefresh();
-				
-				ServletWebServerFactory serverFactory = this.getBean(ServletWebServerFactory.class);
-				DispatcherServlet dispatcherServlet = this.getBean(DispatcherServlet.class);
-				dispatcherServlet.setApplicationContext(this);
-				
-				
-				WebServer webServer = serverFactory.getWebServer(ServletContext -> {
-					ServletContext.addServlet("dispatcherServlet", dispatcherServlet
-							).addMapping("/*");
-				});
-				
-				webServer.start();
-			}
+		// MySpringApplication.run(HellobootApplication.class, args);
+		SpringApplication.run(HellobootApplication.class, args);
 		
-		};
-		applicationContext.register(HellobootApplication.class);
-		applicationContext.refresh();
+		/* MySpringApplication이라는 함수를 만들어서 실행시켰으나
+		 * SpringBoot에서 제공하고 있는 SpringApplication 안에 내장되어 있는 기능으로 작동 가능하기 때문에
+		 * MySpringApplication을 삭제하고 사용가능함.
+		 */
 		
 	}
+
 
 }
