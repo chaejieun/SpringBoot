@@ -26,7 +26,7 @@ public class HelloApiTest {
 		Assertions.assertThat(res.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE)).startsWith(MediaType.TEXT_PLAIN_VALUE);
 		
 		// body hello Spring 으로 왔는 지 확인해볼 것
-		Assertions.assertThat(res.getBody()).isEqualTo("Hello Spring");
+		Assertions.assertThat(res.getBody()).isEqualTo("*Hello Spring*");
 		
 	}
 	
