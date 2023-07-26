@@ -11,5 +11,4 @@ public class HellobootApplication {
 		SpringApplication.run(HellobootApplication.class, args);
 	}
 
-
 }
