@@ -74,6 +74,7 @@ public class ConfigurationTest {
 		
 		@Bean
 		Bean2 bean2() {
+			
 			return new Bean2(common());
 		}
 	}
